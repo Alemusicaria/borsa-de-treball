@@ -1,0 +1,43 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Administrador;
+use Illuminate\Http\Request;
+
+class AdministradorController extends Controller
+{
+    public function store(Request $request)
+    {
+        $data = $request->only(['nom_usuari', 'contrasenya', 'correu_electronic']);
+        $administrador = Administrador::create($data);
+        return response()->json($administrador, 201);
+    }
+
+    public function index()
+    {
+        $administradores = Administrador::all();
+        return response()->json($administradores, 200);
+    }
+
+    public function get($id)
+    {
+        $administrador = Administrador::findOrFail($id);
+        return response()->json($administrador, 200);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = $request->only(['nom_usuari', 'contrasenya', 'correu_electronic']);
+        $administrador = Administrador::findOrFail($id);
+        $administrador->update($data);
+        return response()->json($administrador, 200);
+    }
+
+    public function destroy($id)
+    {
+        $administrador = Administrador::findOrFail($id);
+        $administrador->delete();
+        return response()->json(null, 204);
+    }
+}

@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Administrador extends Model
+{
+    protected $primaryKey = 'admin_id';
+    protected $fillable = ['nom_usuari', 'contrasenya', 'correu_electronic'];
+
+
+}

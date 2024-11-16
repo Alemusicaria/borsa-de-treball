@@ -1,0 +1,1 @@
+<h1>@yield('titol_content')</h1>
